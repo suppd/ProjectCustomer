@@ -14,11 +14,12 @@ public class CarTransition : MonoBehaviour
 
     Vector3 movementDirection;
 
-    public float speed = 2f;
-    public float carSpeed = 2f;
-    public float stopSpeed = 0.0f;
-    public float turnSpeed = 90;
-    public float movementMultiplier = 1f;
+    float speed = 20f;
+    float carSpeed = 20f;
+    float stopSpeed = 0.0f;
+    float turnSpeed = 90;
+    float maxSpeed = 30f;
+    float minSpeed = 20f;
 
     float verticalMovement;
 
@@ -29,14 +30,14 @@ public class CarTransition : MonoBehaviour
     {
         CarRb.freezeRotation = true;
     }
-    void CarInput()
-    {
+    //void CarInput()
+    //{
         
-        verticalMovement = Input.GetAxis("Vertical");
+    //    verticalMovement = Input.GetAxis("Vertical");
 
-        movementDirection = transform.forward * verticalMovement + transform.right;
+    //    movementDirection = transform.forward * verticalMovement + transform.right;
 
-    }
+    //}
 
     private void FixedUpdate()
     {
@@ -58,22 +59,32 @@ public class CarTransition : MonoBehaviour
             
             PlayerPos.position = InCarPosition.transform.position;
             transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+            CarRb.velocity = transform.right * carSpeed;
         }
         else
         {
             
         }
 
+        if (carSpeed > maxSpeed)
+        {
+            carSpeed = maxSpeed;
+        }
+        if (carSpeed <= minSpeed)
+        {
+            carSpeed = minSpeed;
+        }
+
         if (Input.GetKey(KeyCode.W) && PlayerIn == true)
         {
-            CarRb.velocity = transform.right * speed * Input.GetAxis("Car");
-
+            carSpeed += 0.1f; 
         }
 
-        else
-        {
-            CarRb.velocity = CarRb.velocity * 0.99f;
+        if (Input.GetKey(KeyCode.S) && PlayerIn == true)
+        {    
+            carSpeed -= 0.1f;
         }
+
 
 
 
@@ -91,7 +102,7 @@ public class CarTransition : MonoBehaviour
                     PlayerPos.position = InCarPosition.transform.position;
                     PlayerIn = true;
                     speed = carSpeed;
-                    transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+                    //transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
                 }
             }
             else
@@ -111,7 +122,7 @@ public class CarTransition : MonoBehaviour
                 }
             }
         }
-        print(CanChange);
+        print(carSpeed);
     }
 
     IEnumerator Change()
