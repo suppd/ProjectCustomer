@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CharInput();
+        controlDrag();
     }
 
     private void FixedUpdate()
