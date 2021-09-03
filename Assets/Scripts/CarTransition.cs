@@ -58,8 +58,8 @@ public class CarTransition : MonoBehaviour
         {
             
             PlayerPos.position = InCarPosition.transform.position;
-            transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
-            CarRb.velocity = transform.right * carSpeed;
+            //transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
+            //CarRb.velocity = transform.right * carSpeed;
         }
         else
         {
