@@ -23,7 +23,7 @@ public class CarTransition : MonoBehaviour
 
     float verticalMovement;
 
-    bool PlayerIn = false;
+    public bool PlayerIn = false;
     bool CanChange = true;
 
     private void Start()
@@ -63,7 +63,7 @@ public class CarTransition : MonoBehaviour
         }
         else
         {
-            
+            CarRb.constraints = RigidbodyConstraints.FreezePosition;
         }
 
         if (carSpeed > maxSpeed)
@@ -107,19 +107,19 @@ public class CarTransition : MonoBehaviour
             }
             else
             {
-                if (Input.GetKey(KeyCode.E) && PlayerIn == true)
-                {
-                    if (CanChange == true)
-                    {
-                        CanChange = false;
-                        StartCoroutine(Change());
-                        Pmove.moveSpeed = 9f;
-                        Pmove.movementMultiplier = 10f;
-                        PlayerRb.useGravity = true;
-                        PlayerIn = false;
-                        speed = stopSpeed;
-                    }
-                }
+                //if (Input.GetKey(KeyCode.E) && PlayerIn == true)
+                //{
+                //    if (CanChange == true)
+                //    {
+                //        CanChange = false;
+                //        StartCoroutine(Change());
+                //        Pmove.moveSpeed = 9f;
+                //        Pmove.movementMultiplier = 10f;
+                //        PlayerRb.useGravity = true;
+                //        PlayerIn = false;
+                //        speed = stopSpeed;
+                //    }
+                //}
             }
         }
         print(carSpeed);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Animations;
 
 namespace PathCreation.Examples
 {
@@ -7,14 +8,17 @@ namespace PathCreation.Examples
     public class PathFollower : MonoBehaviour
     {
         public PathCreator pathCreator;
+        public CarTransition carScript;
+        public PositionConstraint positionCon;
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
 
-        void Start() {
+        void Start() 
+        {
+            positionCon = GetComponentInParent<PositionConstraint>();
             if (pathCreator != null)
             {
-                
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
             }
@@ -22,12 +26,14 @@ namespace PathCreation.Examples
 
         void Update()
         {
-            if (pathCreator != null)
+            if (pathCreator != null && positionCon.constraintActive == false)
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
+
+            
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
