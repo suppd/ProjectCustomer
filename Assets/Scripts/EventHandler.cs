@@ -4,35 +4,19 @@ using UnityEngine;
 
 public class EventHandler : MonoBehaviour
 {
+    private float concentrationBarAmount;
     Camera playerCam;
 
-    public float ConcentrationAmount = 100f;
-    float PovY;
     void Start()
     {
-        
+        concentrationBarAmount = GetComponent<ConcentrationBar>().healthAmount;
     }
 
     void Update()
     {
-        
-    }
-
-    void HeadDownEvent()
-    {
-        PovY = playerCam.transform.rotation.y;
-        if (ConcentrationAmount <= 50)
+        if (concentrationBarAmount <= 90)
         {
-            PovY = playerCam.transform.rotation.y - 20;
-            
+
         }
-
-    }
-
-    Vector3 LookDown()
-    {
-        Vector3 rot = Vector3.zero;
-        rot.y -= 20;
-        return rot;
     }
 }

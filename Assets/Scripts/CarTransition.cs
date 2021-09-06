@@ -63,7 +63,7 @@ public class CarTransition : MonoBehaviour
         }
         else
         {
-            CarRb.constraints = RigidbodyConstraints.FreezePosition;
+            //CarRb.constraints = RigidbodyConstraints.FreezePosition;
         }
 
         if (carSpeed > maxSpeed)
