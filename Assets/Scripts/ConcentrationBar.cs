@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ConcentrationBar : MonoBehaviour
 {
     public float healthAmount = 100f;
+    public CarTransition carScript;
     private float maxHealth = 100f;
     private float decreaseAmount = 1f;
 
@@ -16,7 +17,10 @@ public class ConcentrationBar : MonoBehaviour
     }
     private void Update()
     {
-        healthAmount -= decreaseAmount * Time.deltaTime;
-        healthBar.fillAmount = healthAmount / maxHealth;
+        if (carScript.playerIn == true)
+        {
+            healthAmount -= decreaseAmount * Time.deltaTime;
+            healthBar.fillAmount = healthAmount / maxHealth;
+        }
     }
 }

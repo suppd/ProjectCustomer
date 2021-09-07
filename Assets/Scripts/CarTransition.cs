@@ -16,15 +16,15 @@ public class CarTransition : MonoBehaviour
 
     float speed = 20f;
     float carSpeed = 20f;
-    float stopSpeed = 0.0f;
-    float turnSpeed = 90;
+    //float stopSpeed = 0.0f;
+    //float turnSpeed = 90;
     float maxSpeed = 30f;
     float minSpeed = 20f;
 
     float verticalMovement;
 
-    public bool PlayerIn = false;
-    bool CanChange = true;
+    public bool playerIn = false;
+    bool canChange = true;
 
     private void Start()
     {
@@ -54,7 +54,7 @@ public class CarTransition : MonoBehaviour
         
 
 
-        if (PlayerIn == true)
+        if (playerIn == true)
         {
             
             PlayerPos.position = InCarPosition.transform.position;
@@ -75,12 +75,12 @@ public class CarTransition : MonoBehaviour
             carSpeed = minSpeed;
         }
 
-        if (Input.GetKey(KeyCode.W) && PlayerIn == true)
+        if (Input.GetKey(KeyCode.W) && playerIn == true)
         {
             carSpeed += 0.1f; 
         }
 
-        if (Input.GetKey(KeyCode.S) && PlayerIn == true)
+        if (Input.GetKey(KeyCode.S) && playerIn == true)
         {    
             carSpeed -= 0.1f;
         }
@@ -90,17 +90,17 @@ public class CarTransition : MonoBehaviour
 
         if (Vector3.Distance(PlayerPos.position, transform.position) < 10)
         {
-            if (Input.GetKey(KeyCode.E) && PlayerIn == false)
+            if (Input.GetKey(KeyCode.E) && playerIn == false)
             {
-                if (CanChange == true)
+                if (canChange == true)
                 {
-                    CanChange = false;
+                    canChange = false;
                     StartCoroutine(Change());
                     Pmove.moveSpeed = 0f;
                     Pmove.movementMultiplier = 0f;
                     PlayerRb.useGravity = false;
                     PlayerPos.position = InCarPosition.transform.position;
-                    PlayerIn = true;
+                    playerIn = true;
                     speed = carSpeed;
                     //transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
                 }
@@ -122,13 +122,13 @@ public class CarTransition : MonoBehaviour
                 //}
             }
         }
-        print(carSpeed);
+        //print(carSpeed);
     }
 
     IEnumerator Change()
     { 
         yield return new WaitForSeconds(1);
-        CanChange = true;
+        canChange = true;
     }
  
 }

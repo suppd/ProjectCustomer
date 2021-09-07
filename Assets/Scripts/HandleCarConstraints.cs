@@ -15,7 +15,7 @@ public class HandleCarConstraints : MonoBehaviour
 
     void Update()
     {
-        if (carScript.PlayerIn == true)
+        if (carScript.playerIn == true)
         {
             positionCon.constraintActive = false;
         }

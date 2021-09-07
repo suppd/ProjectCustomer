@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: c23b1111662f8e741b20d228405b2b32
+guid: 4ffed2b6711da6f448b783b37ad507a1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Colorpallete
-    second: {fileID: 2100000, guid: 4f237c8324a7f364ebefed14e224fa20, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: b9f7a0fece702584694058633d358198, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 6e8f3e3ac50397b49a7e84ad9a239a25, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: edce03ffb04fb994588aeea72e94dbbf, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

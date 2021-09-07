@@ -7,41 +7,47 @@ public class QTE_Event : MonoBehaviour
 {
     public float fillAmount = 0f;
     public float timeThreshold = 0f;
+    public string eventSucces = "n";
 
+    public Image RingBackground;
     Image Ring;
-    Image RingBackground;
+    
     void Start()
     {
         Ring = GetComponent<Image>();
-        RingBackground = GetComponentInParent<Image>();
+        
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && this != null)
         {
             fillAmount += 0.2f;
         }
 
         timeThreshold += Time.deltaTime;
 
-        if (timeThreshold > 0.2f)
+        if (timeThreshold > 0.2f && this != null)
         {
             timeThreshold = 0f;
             fillAmount -= 0.06f;
         }
 
-        if (fillAmount < 0)
+        if (fillAmount < 0 && this != null)
         {
             fillAmount = 0f;
         }
 
-        if (fillAmount > 1 && this != null)
+        if (fillAmount > 1 && this != null && Ring != null && RingBackground.sprite != null)
         {
-
-            DestroyImmediate(Ring);
-            DestroyImmediate(RingBackground.sprite);
-            DestroyImmediate(this);
-            //play "Sucess" animation
+            Ring.enabled = false;
+            RingBackground.enabled = false;
+            //this.enabled = false;
+            //Destroy(Ring);
+            //Destroy(RingBackground);
+            //Destroy(this);
+            eventSucces = "y";
+            Debug.Log(eventSucces);
+            this.enabled = false;
         }
 
         Ring.fillAmount = fillAmount;
