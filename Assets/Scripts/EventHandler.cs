@@ -10,8 +10,9 @@ public class EventHandler : MonoBehaviour
     bool canChange = true;
     bool eventPlayed = false;
 
-    public bool nowIsEvent;
+    public bool nowIsEvent = false;
     public Image qte_Img;
+    public Image qte_BgImg;
     public QTE_Event qte_Event;
     public ConcentrationBar concentrationBar;
     public CarTransition carScript;
@@ -20,6 +21,7 @@ public class EventHandler : MonoBehaviour
     {
         qte_Img.enabled = false;
         qte_Event.enabled = false;
+        qte_BgImg.enabled = false;
     }
 
     void Update()
@@ -40,38 +42,39 @@ public class EventHandler : MonoBehaviour
         //    RepeatQTE();
         //}
         
-        if (nowIsEvent == false && qte_Img.enabled == false && qte_Event.enabled == false)
+        if (nowIsEvent == false && qte_Img.enabled == false && qte_Event.enabled == false && carScript.playerIn && qte_Event.fillAmount <= 0.1f)
         {
             StartCoroutine(WaitForEvent());
+
         } 
-        if (nowIsEvent == true && qte_Img.enabled == false && qte_Event.enabled == false)
-        {
-            QuickEvent();
-        }
+        //if (nowIsEvent == true && carScript.playerIn)
+        //{
+        //    QuickEvent();
+        //}
+
 
     }
-
-    void RepeatQTE()
-    {
-        if (canChange == false && eventPlayed == true)
-        {
-            StartCoroutine(Change());
-            eventPlayed = false;
-        }
-    }
-
     void QuickEvent()
     {
         qte_Img.enabled = true;
         qte_Event.enabled = true;
+        qte_BgImg.enabled = true;
         nowIsEvent = false;
-        //StartCoroutine(WaitForEvent());
     }
 
     IEnumerator WaitForEvent()
     {
-        yield return new WaitForSeconds(5f);
-        nowIsEvent = true;
+        if (nowIsEvent == false && carScript.playerIn)
+        {
+            yield return new WaitForSeconds(5);
+            nowIsEvent = true;
+            QuickEvent();
+            //qte_Img.enabled = false;
+            //qte_Event.enabled = false;
+            //qte_BgImg.enabled = false;
+
+        }
+
     }
 
     IEnumerator Change()

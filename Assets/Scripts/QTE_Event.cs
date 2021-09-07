@@ -8,6 +8,7 @@ public class QTE_Event : MonoBehaviour
     public float fillAmount = 0f;
     public float timeThreshold = 0f;
     public string eventSucces = "n";
+   
 
     public Image RingBackground;
     Image Ring;
@@ -37,7 +38,7 @@ public class QTE_Event : MonoBehaviour
             fillAmount = 0f;
         }
 
-        if (fillAmount > 1 && this != null && Ring != null && RingBackground.sprite != null)
+        if (fillAmount >= 1 && this != null && Ring != null && RingBackground.sprite != null)
         {
             Ring.enabled = false;
             RingBackground.enabled = false;
@@ -47,9 +48,15 @@ public class QTE_Event : MonoBehaviour
             //Destroy(this);
             eventSucces = "y";
             Debug.Log(eventSucces);
+            fillAmount = 0;
             this.enabled = false;
         }
 
         Ring.fillAmount = fillAmount;
+    }
+
+    public void Reset()
+    {
+        
     }
 }
