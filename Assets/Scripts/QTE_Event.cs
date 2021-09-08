@@ -7,10 +7,10 @@ public class QTE_Event : MonoBehaviour
 {
     public float fillAmount = 0f;
     public float timeThreshold = 0f;
-    public string eventSucces = "n";
+    public float failTimer = 0f;
+    public string eventSucces = "";
     // w = wait, n = no, y = yes
-   
-
+    public EventHandler eventHandler;
     public Image RingBackground;
     Image Ring;
     
@@ -47,12 +47,31 @@ public class QTE_Event : MonoBehaviour
         }
 
         Ring.fillAmount = fillAmount;
+
+        if (eventHandler.nowIsEvent)
+        {
+            failTimer += Time.deltaTime;
+            if (failTimer >= 5f)
+            {
+                failTimer = 0f;
+                eventSucces = "n";
+                StartCoroutine(ResetFail());
+            }
+        }
     }
+
 
     IEnumerator ResetSucces()
     {
         yield return  new WaitForSeconds(3f);
-        eventSucces = "w";
+        eventSucces = "";
+        fillAmount = 0;
+    }
+
+    IEnumerator ResetFail()
+    {
+        yield return new WaitForSeconds(3f);
+        eventSucces = "";
         fillAmount = 0;
     }
 }

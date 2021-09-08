@@ -11,15 +11,20 @@ public class EventHandler : MonoBehaviour
     public bool nowIsEvent = false;
     public Image qte_Img;
     public Image qte_BgImg;
+    public Image qte_Win;
+    public Image qte_Fail;
     public QTE_Event qte_Event;
     public ConcentrationBar concentrationBar;
     public CarTransition carScript;
+    public float showTimer = 0f;
 
     void Start()
     {
         qte_Img.enabled = false;
         qte_Event.enabled = false;
         qte_BgImg.enabled = false;
+        qte_Win.enabled = false;
+        qte_Fail.enabled = false;
     }
 
     void Update()
@@ -36,16 +41,55 @@ public class EventHandler : MonoBehaviour
         {
             nowIsEvent = true;
         }
-        if (qte_Event.eventSucces == "y" || qte_Event.fillAmount >= 1)
+        showTimer += Time.deltaTime;
+
+        if (qte_Event.eventSucces == "y")
         {
             nowIsEvent = false;
             qte_Img.enabled = false;
             qte_Event.enabled = false;
             qte_BgImg.enabled = false;
+            qte_Win.enabled = true;
+            qte_Fail.enabled = false;
+            showTimer = 0f;
+            
+            if (showTimer >= 1f)
+            {
+                qte_Fail.enabled = false;
+                qte_Win.enabled = false;
+                showTimer = 0f;
+                qte_Event.eventSucces = "";
+            }
+        }
+        if (qte_Event.eventSucces == "n")
+        {
+            nowIsEvent = false;
+            qte_Fail.enabled = true;
+            qte_Img.enabled = false;
+            qte_Event.enabled = false;
+            qte_BgImg.enabled = false;
+            qte_Win.enabled = false;
+            showTimer = 0f;
+            
+            if (showTimer >= 1f)
+            {
+                qte_Fail.enabled = false;
+                qte_Win.enabled = false;
+                showTimer = 0f;
+                qte_Event.eventSucces = "";
+            }
+        }
+        if (qte_Event.eventSucces == "")
+        {
+
+            qte_Fail.enabled = false;
+            qte_Win.enabled = false;
+            showTimer = 0;
         }
 
-        Debug.Log(nowIsEvent);
+        //Debug.Log(nowIsEvent);
 
+        Debug.Log(qte_Event.eventSucces);
     }
     void QuickEvent()
     {
