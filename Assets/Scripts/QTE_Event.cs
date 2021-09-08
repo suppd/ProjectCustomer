@@ -8,6 +8,7 @@ public class QTE_Event : MonoBehaviour
     public float fillAmount = 0f;
     public float timeThreshold = 0f;
     public string eventSucces = "n";
+    // w = wait, n = no, y = yes
    
 
     public Image RingBackground;
@@ -18,11 +19,11 @@ public class QTE_Event : MonoBehaviour
         Ring = GetComponent<Image>();
         
     }
-    void Update()
+    void  Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && this != null)
         {
-            fillAmount += 0.2f;
+            fillAmount += 0.08f;
         }
 
         timeThreshold += Time.deltaTime;
@@ -30,7 +31,7 @@ public class QTE_Event : MonoBehaviour
         if (timeThreshold > 0.2f && this != null)
         {
             timeThreshold = 0f;
-            fillAmount -= 0.06f;
+            fillAmount -= 0.02f;
         }
 
         if (fillAmount < 0 && this != null)
@@ -38,25 +39,20 @@ public class QTE_Event : MonoBehaviour
             fillAmount = 0f;
         }
 
-        if (fillAmount >= 1 && this != null && Ring != null && RingBackground.sprite != null)
+        if (fillAmount >= 1.0f)
         {
-            Ring.enabled = false;
-            RingBackground.enabled = false;
-            //this.enabled = false;
-            //Destroy(Ring);
-            //Destroy(RingBackground);
-            //Destroy(this);
             eventSucces = "y";
             Debug.Log(eventSucces);
-            fillAmount = 0;
-            this.enabled = false;
+            StartCoroutine(ResetSucces());
         }
 
         Ring.fillAmount = fillAmount;
     }
 
-    public void Reset()
+    IEnumerator ResetSucces()
     {
-        
+        yield return  new WaitForSeconds(3f);
+        eventSucces = "w";
+        fillAmount = 0;
     }
 }

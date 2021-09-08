@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class EventHandler : MonoBehaviour
 {
     float concentrationBarAmount;
-    Camera playerCam;
-    bool canChange = true;
-    bool eventPlayed = false;
 
+    //public variables
     public bool nowIsEvent = false;
     public Image qte_Img;
     public Image qte_BgImg;
@@ -27,60 +25,52 @@ public class EventHandler : MonoBehaviour
     void Update()
     {
         concentrationBarAmount = concentrationBar.healthAmount;
-        Debug.Log(nowIsEvent);
-        //if (concentrationBarAmount <= 90 && canChange == true && carScript.playerIn == true)
-        //{
-            
-        //    canChange = false;
-        //    eventPlayed = true;
 
-          
-        //}
-        //if (qte_Event.eventSucces.Contains("y") || qte_Event.eventSucces.Contains("n"))
-        //{
-        //    eventPlayed = true;
-        //    RepeatQTE();
-        //}
-        
-        if (nowIsEvent == false && qte_Img.enabled == false && qte_Event.enabled == false && carScript.playerIn && qte_Event.fillAmount <= 0.1f)
+        if (nowIsEvent == false && qte_Img.enabled == false && qte_Event.enabled == false && qte_BgImg.enabled == false && carScript.playerIn && qte_Event.fillAmount <= 0.00f)
         {
             StartCoroutine(WaitForEvent());
 
-        } 
-        //if (nowIsEvent == true && carScript.playerIn)
-        //{
-        //    QuickEvent();
-        //}
+        }
 
+        if (qte_BgImg.enabled == true && qte_Img.enabled == true && qte_Event.enabled == true)
+        {
+            nowIsEvent = true;
+        }
+        if (qte_Event.eventSucces == "y" || qte_Event.fillAmount >= 1)
+        {
+            nowIsEvent = false;
+            qte_Img.enabled = false;
+            qte_Event.enabled = false;
+            qte_BgImg.enabled = false;
+        }
+
+        Debug.Log(nowIsEvent);
 
     }
     void QuickEvent()
     {
-        qte_Img.enabled = true;
-        qte_Event.enabled = true;
-        qte_BgImg.enabled = true;
-        nowIsEvent = false;
+        if (qte_Event.fillAmount == 0)
+        {
+            qte_Img.enabled = true;
+            qte_Event.enabled = true;
+            qte_BgImg.enabled = true;
+        }
     }
 
     IEnumerator WaitForEvent()
     {
-        if (nowIsEvent == false && carScript.playerIn)
+        if (nowIsEvent != true)
         {
+           // Debug.Log("starting to wait");
             yield return new WaitForSeconds(5);
-            nowIsEvent = true;
+           // Debug.Log("waited for 5 seconds");
             QuickEvent();
-            //qte_Img.enabled = false;
-            //qte_Event.enabled = false;
-            //qte_BgImg.enabled = false;
-
+            CooldownEvent();
         }
-
     }
 
-    IEnumerator Change()
+    IEnumerator CooldownEvent()
     {
-        yield return new WaitForSeconds(10);
-        canChange = true;
-        yield return null;
+        yield return new WaitForSeconds(2);
     }
 }
