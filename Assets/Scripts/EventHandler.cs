@@ -16,6 +16,8 @@ public class EventHandler : MonoBehaviour
     public QTE_Event qte_Event;
     public ConcentrationBar concentrationBar;
     public CarTransition carScript;
+    public PathCreation.Examples.PathFollower pathFollower;
+    public Text failText;
     public float showTimer = 0f;
 
     void Start()
@@ -43,6 +45,26 @@ public class EventHandler : MonoBehaviour
         }
         showTimer += Time.deltaTime;
 
+        CheckEventStates();
+        HandleLoss();
+
+
+        //Debug.Log(nowIsEvent);
+
+        Debug.Log(qte_Event.eventSucces);
+    }
+    void QuickEvent()
+    {
+        if (qte_Event.fillAmount == 0)
+        {
+            qte_Img.enabled = true;
+            qte_Event.enabled = true;
+            qte_BgImg.enabled = true;
+        }
+    }
+
+    void CheckEventStates()
+    {
         if (qte_Event.eventSucces == "y")
         {
             nowIsEvent = false;
@@ -52,7 +74,7 @@ public class EventHandler : MonoBehaviour
             qte_Win.enabled = true;
             qte_Fail.enabled = false;
             showTimer = 0f;
-            
+
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;
@@ -70,7 +92,7 @@ public class EventHandler : MonoBehaviour
             qte_BgImg.enabled = false;
             qte_Win.enabled = false;
             showTimer = 0f;
-            
+
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;
@@ -91,23 +113,34 @@ public class EventHandler : MonoBehaviour
 
         Debug.Log(qte_Event.eventSucces);
     }
-    void QuickEvent()
+
+
+    void HandleLoss()
     {
-        if (qte_Event.fillAmount == 0)
+        if (concentrationBar.healthAmount <= 0)
         {
-            qte_Img.enabled = true;
-            qte_Event.enabled = true;
-            qte_BgImg.enabled = true;
+            failText.enabled = true;
+            pathFollower.speed = 0;
+            DisableAllButtons();
         }
+    }
+
+    void DisableAllButtons()
+    {
+        qte_BgImg.enabled = false;
+        qte_Event.enabled = false;
+        qte_Fail.enabled = false;
+        qte_Img.enabled = false;
+        qte_Win.enabled = false;
     }
 
     IEnumerator WaitForEvent()
     {
         if (nowIsEvent != true)
         {
-           // Debug.Log("starting to wait");
-            yield return new WaitForSeconds(5);
-           // Debug.Log("waited for 5 seconds");
+            // Debug.Log("starting to wait");
+            yield return new WaitForSeconds(6);
+            // Debug.Log("waited for 5 seconds");
             QuickEvent();
             CooldownEvent();
         }

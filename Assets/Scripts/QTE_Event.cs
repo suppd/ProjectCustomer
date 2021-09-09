@@ -12,6 +12,7 @@ public class QTE_Event : MonoBehaviour
     // w = wait, n = no, y = yes
     public EventHandler eventHandler;
     public Image RingBackground;
+    public ConcentrationBar concentrationBar;
     Image Ring;
     
     void Start()
@@ -55,6 +56,7 @@ public class QTE_Event : MonoBehaviour
             {
                 failTimer = 0f;
                 eventSucces = "n";
+                concentrationBar.healthAmount -= 10;
                 StartCoroutine(ResetFail());
             }
         }
