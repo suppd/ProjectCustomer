@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02492591, g: 0.041691482, b: 0.09602332, a: 1}
+  m_IndirectSpecularColor: {r: 0.12121257, g: 0.2458599, b: 0.5329245, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3620,12 +3620,42 @@ MonoBehaviour:
     _bezierPath:
       points:
       - {x: -311.30273, y: 0.00000047683716, z: -3.8989167}
-      - {x: -222.24677, y: 0.00000035762787, z: -3.0032663}
-      - {x: -44.134827, y: 0.00000011920929, z: -1.2119652}
-      - {x: 44.921143, y: 0, z: -0.3163147}
+      - {x: -285.99365, y: 0.00000035762787, z: 1.7551794}
+      - {x: -235.6731, y: 0.045446742, z: 14.617091}
+      - {x: -210.06616, y: 0, z: 18.717468}
+      - {x: -174.85059, y: -0.0625, z: 24.356455}
+      - {x: -173.55225, y: 411.25, z: 30.48742}
+      - {x: -114.447754, y: 0, z: 4.1904263}
+      - {x: -83.76075, y: -213.52063, z: -9.462952}
+      - {x: -51.167496, y: 103.98877, z: -5.103635}
+      - {x: -18.574097, y: 0, z: -0.7443204}
+      - {x: 38.547607, y: -182.24597, z: 6.895615}
+      - {x: 42.005608, y: 96.05029, z: 17.99914}
+      - {x: 55.194275, y: 0, z: 14.764642}
+      - {x: 78.888916, y: -172.56311, z: 8.953574}
+      - {x: 86.795425, y: 86.875, z: -3.24891}
+      - {x: 111.137695, y: 0, z: -3.5642242}
+      - {x: 156.02759, y: -160.20728, z: -4.1456995}
+      - {x: 183.62389, y: 81.5166, z: 33.24357}
+      - {x: 175.99347, y: 0, z: 62.70149}
+      - {x: 163.36841, y: -134.875, z: 111.4417}
+      - {x: 150.39513, y: 78.53125, z: 88.83391}
+      - {x: 161.64246, y: 0, z: 122.62253}
+      - {x: 179.12708, y: -122.08131, z: 175.14886}
+      - {x: 176.98131, y: 66.42334, z: 189.77306}
+      - {x: 175.28857, y: 0, z: 204.39728}
+      - {x: 171.91553, y: -132.35938, z: 233.53844}
+      - {x: 163.02773, y: 63.19213, z: 258.09274}
+      - {x: 154.1399, y: 0, z: 282.64716}
+      - {x: 138.58112, y: -110.62233, z: 325.6314}
+      - {x: 156.5824, y: 59.453857, z: 335.40927}
+      - {x: 174.58356, y: 0, z: 346.34506}
+      - {x: 206.47015, y: -105.31445, z: 365.71634}
+      - {x: 152.81189, y: 58.19458, z: 399.83832}
+      - {x: 156.95972, y: 0, z: 367.24167}
       isClosed: 0
       space: 0
-      controlMode: 3
+      controlMode: 0
       autoControlLength: 0.3
       boundsUpToDate: 0
       bounds:
@@ -3634,9 +3664,19 @@ MonoBehaviour:
       perAnchorNormalsAngle:
       - 0
       - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
       globalNormalsAngle: 90
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -3666,7 +3706,7 @@ Transform:
   m_GameObject: {fileID: 1647874985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1054, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.28, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -3868,6 +3908,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 834639610}
     m_Modifications:
+    - target: {fileID: 2885410597471497712, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885410597471497712, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885410597471497712, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 2885410597471497713, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3880,6 +3932,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2885410597471497715, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 2885410597792007608, guid: 12e62d8a797b0e344b6ea70bdd0cd5c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.526
