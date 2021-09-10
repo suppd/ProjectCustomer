@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Animations;
+using PathCreation;
 
 namespace PathCreation.Examples
 {
@@ -13,6 +14,9 @@ namespace PathCreation.Examples
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
+        Quaternion Rotationpls;
+
+        float rotationY;
 
         void Start() 
         {
@@ -22,6 +26,8 @@ namespace PathCreation.Examples
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
             }
+
+            rotationY = transform.rotation.y;
         }
 
         void Update()
@@ -30,7 +36,19 @@ namespace PathCreation.Examples
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-                //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+                //rotationY = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+                
+               
+                //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+                Rotationpls = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+                Rotationpls.y -= 90;
+                
+                transform.rotation = Rotationpls;
+                //if (pathCreator.path.GetClosestPointOnPath != pathCreator.path.GetPointAtDistance(distanceTravelled))
+                //{
+
+                //}
+                //Rotationpls.y -= 90;
             }
 
             

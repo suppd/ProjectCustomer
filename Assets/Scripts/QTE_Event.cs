@@ -51,6 +51,7 @@ public class QTE_Event : MonoBehaviour
 
         if (eventHandler.nowIsEvent)
         {
+            failTimer = 0f;
             failTimer += Time.deltaTime;
             if (failTimer >= 5f)
             {
