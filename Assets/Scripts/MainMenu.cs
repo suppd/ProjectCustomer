@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void GoToSettings()
     {
-        SceneManager.LoadScene("SettingsMenu");
+        //SceneManager.LoadScene("SettingsMenu");
     }
 
     public void GoToMainMenu()

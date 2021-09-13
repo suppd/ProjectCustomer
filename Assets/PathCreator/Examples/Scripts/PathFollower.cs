@@ -16,7 +16,7 @@ namespace PathCreation.Examples
         public float turnSpeed = 1f;
         public float slerpSpeed = 1f;
         float distanceTravelled;
-        Quaternion Rotationpls;
+        Quaternion rotater;
 
 
         void Start() 
@@ -28,7 +28,7 @@ namespace PathCreation.Examples
                 pathCreator.pathUpdated += OnPathChanged;
             }
 
-            //rotationY = transform.rotation.y;
+            
         }
 
         void Update()
@@ -38,8 +38,13 @@ namespace PathCreation.Examples
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-                //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-                transform.rotation = Quaternion.LookRotation(Vector3.forward, transform.position * Time.fixedDeltaTime * turnSpeed);
+               // rotater = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+               // rotater.z += 180;
+               // rotater.x -= 90;
+
+                //transform.rotation = rotater;
+
+                //transform.rotation = Quaternion.LookRotation(Vector3.forward, transform.position * Time.fixedDeltaTime * turnSpeed);
   
                 Vector3 dir = pathCreator.path.GetClosestPointOnPath(transform.position) - transform.position;
 
