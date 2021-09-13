@@ -29,7 +29,7 @@ public class EventHandler : MonoBehaviour
         qte_Win.enabled = false;
         qte_Fail.enabled = false;
         qte_FailSlider.enabled = false;
-        cooldownKeySwitch = 0;
+        
     }
 
     void Update()
@@ -80,6 +80,7 @@ public class EventHandler : MonoBehaviour
             qte_Fail.enabled = false;
             qte_FailSlider.enabled = false;
             showTimer = 0f;
+            qte_Event.keypicked = false;
 
             if (showTimer >= 1f)
             {
@@ -99,6 +100,7 @@ public class EventHandler : MonoBehaviour
             qte_Win.enabled = false;
             qte_FailSlider.enabled = false;
             showTimer = 0f;
+            qte_Event.keypicked = false;
 
             if (showTimer >= 1f)
             {

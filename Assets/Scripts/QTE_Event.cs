@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QTE_Event : MonoBehaviour
 {
     public bool isFailTimer;
-    public bool waitingForKey;
+    public bool keypicked;
     public float fillAmount = 0f;
     public float failFillAmount = 0f;
     public float timeThreshold = 0f;
@@ -33,9 +33,17 @@ public class QTE_Event : MonoBehaviour
     {
         SuccesRing();
         FailTimer();
+        if (keypicked == false)
+        {
+            PickKey();
+        }
     }
 
-
+    void PickKey()
+    {
+        qteKey = Random.Range(1, 5);
+        keypicked = true;
+    }
     void SuccesRing()
     {
         if (isFailTimer == false)
