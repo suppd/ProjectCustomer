@@ -13,6 +13,7 @@ public class EventHandler : MonoBehaviour
     public Image qte_BgImg;
     public Image qte_Win;
     public Image qte_Fail;
+    public Image qte_FailSlider;
     public QTE_Event qte_Event;
     public ConcentrationBar concentrationBar;
     public CarTransition carScript;
@@ -27,6 +28,8 @@ public class EventHandler : MonoBehaviour
         qte_BgImg.enabled = false;
         qte_Win.enabled = false;
         qte_Fail.enabled = false;
+        qte_FailSlider.enabled = false;
+        cooldownKeySwitch = 0;
     }
 
     void Update()
@@ -51,7 +54,7 @@ public class EventHandler : MonoBehaviour
 
         //Debug.Log(nowIsEvent);
 
-        Debug.Log(qte_Event.eventSucces);
+        //Debug.Log(qte_Event.eventSucces);
     }
     void QuickEvent()
     {
@@ -60,6 +63,8 @@ public class EventHandler : MonoBehaviour
             qte_Img.enabled = true;
             qte_Event.enabled = true;
             qte_BgImg.enabled = true;
+            qte_FailSlider.enabled = true;
+            
         }
     }
 
@@ -73,6 +78,7 @@ public class EventHandler : MonoBehaviour
             qte_BgImg.enabled = false;
             qte_Win.enabled = true;
             qte_Fail.enabled = false;
+            qte_FailSlider.enabled = false;
             showTimer = 0f;
 
             if (showTimer >= 1f)
@@ -91,12 +97,14 @@ public class EventHandler : MonoBehaviour
             qte_Event.enabled = false;
             qte_BgImg.enabled = false;
             qte_Win.enabled = false;
+            qte_FailSlider.enabled = false;
             showTimer = 0f;
 
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;
                 qte_Win.enabled = false;
+                qte_FailSlider.enabled = false;
                 showTimer = 0f;
                 qte_Event.eventSucces = "";
             }
@@ -111,9 +119,8 @@ public class EventHandler : MonoBehaviour
 
         //Debug.Log(nowIsEvent);
 
-        Debug.Log(qte_Event.eventSucces);
+        //Debug.Log(qte_Event.eventSucces);
     }
-
 
     void HandleLoss()
     {
@@ -132,12 +139,13 @@ public class EventHandler : MonoBehaviour
         qte_Fail.enabled = false;
         qte_Img.enabled = false;
         qte_Win.enabled = false;
+        qte_FailSlider.enabled = false;
     }
 
     IEnumerator WaitForEvent()
     {
         if (nowIsEvent != true)
-        {
+        {   
             // Debug.Log("starting to wait");
             yield return new WaitForSeconds(6);
             // Debug.Log("waited for 5 seconds");
@@ -145,6 +153,7 @@ public class EventHandler : MonoBehaviour
             CooldownEvent();
         }
     }
+
 
     IEnumerator CooldownEvent()
     {

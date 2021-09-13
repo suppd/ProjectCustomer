@@ -16,7 +16,7 @@ namespace PathCreation.Examples
         public float turnSpeed = 1f;
         public float slerpSpeed = 1f;
         float distanceTravelled;
-        Quaternion rotater;
+        Quaternion rotQuat;
 
 
         void Start() 
@@ -33,12 +33,12 @@ namespace PathCreation.Examples
 
         void Update()
         {
-            Debug.Log(pathCreator.path.GetRotationAtDistance(distanceTravelled));
+            //Debug.Log(pathCreator.path.GetRotationAtDistance(distanceTravelled));
             if (pathCreator != null && positionCon.constraintActive == false)
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-               // rotater = pathCreator.path.GetRotationAtDistance(distanceTravelled);
+                rotQuat = pathCreator.path.GetRotationAtDistance(distanceTravelled);
                // rotater.z += 180;
                // rotater.x -= 90;
 
@@ -50,7 +50,7 @@ namespace PathCreation.Examples
 
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-                transform.rotation = Quaternion.Euler(0, 0, angle + 90.0f);
+                transform.rotation = Quaternion.Euler(rotQuat.x, rotQuat.y, angle);
 
 
             } 
