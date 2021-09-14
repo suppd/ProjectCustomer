@@ -20,24 +20,20 @@ public class CarTransition : MonoBehaviour
     //float turnSpeed = 90;
     float maxSpeed = 30f;
     float minSpeed = 20f;
+    float timer = 0f;
 
     float verticalMovement;
 
     public bool playerIn = false;
+    public bool startMoving =false;
     bool canChange = true;
 
     private void Start()
     {
         CarRb.freezeRotation = true;
+        //startMoving = false;
+        timer = 0f;
     }
-    //void CarInput()
-    //{
-        
-    //    verticalMovement = Input.GetAxis("Vertical");
-
-    //    movementDirection = transform.forward * verticalMovement + transform.right;
-
-    //}
 
     private void FixedUpdate()
     {
@@ -45,14 +41,9 @@ public class CarTransition : MonoBehaviour
     }
     void Update()
     {
-        
-        
         PlayerPos = GameObject.FindWithTag("Player").transform;
         InCarPosition = GameObject.FindWithTag("Seat").transform;
         ExitPoint = GameObject.FindWithTag("Exit").transform;
-
-        
-
 
         if (playerIn == true)
         {
@@ -92,18 +83,13 @@ public class CarTransition : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && playerIn == false)
             {
-                if (canChange == true)
-                {
-                    canChange = false;
-                    StartCoroutine(Change());
+
                     Pmove.moveSpeed = 0f;
                     Pmove.movementMultiplier = 0f;
                     PlayerRb.useGravity = false;
                     PlayerPos.position = InCarPosition.transform.position;
                     playerIn = true;
-                    speed = carSpeed;
-                    //transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
-                }
+                    speed = carSpeed; 
             }
             else
             {
@@ -123,11 +109,20 @@ public class CarTransition : MonoBehaviour
             }
         }
         //print(carSpeed);
+
+        if (playerIn)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 1f)
+            {
+                startMoving = true;
+            }
+        }
     }
 
     IEnumerator Change()
     { 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         canChange = true;
     }
  

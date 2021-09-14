@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EventHandler : MonoBehaviour
 {
@@ -131,6 +132,7 @@ public class EventHandler : MonoBehaviour
             failText.enabled = true;
             pathFollower.speed = 0;
             DisableAllButtons();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
