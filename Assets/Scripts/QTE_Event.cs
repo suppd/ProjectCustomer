@@ -132,7 +132,7 @@ public class QTE_Event : MonoBehaviour
                     concentrationBar.healthAmount -= 5;
                     StartCoroutine(ResetFail());
                 
-            }
+                }
         }
     }
     IEnumerator ResetSucces()

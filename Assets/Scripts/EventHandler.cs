@@ -10,8 +10,11 @@ public class EventHandler : MonoBehaviour
 
     //public variables
     public bool nowIsEvent = false;
-    public Image qte_Img;
-    public Image qte_BgImg;
+    public Image qte_SpaceBar;
+    public Image qte_Z;
+    public Image qte_F;
+    public Image qte_R;
+    public Image qte_Ring;
     public Image qte_Win;
     public Image qte_Fail;
     public Image qte_FailSlider;
@@ -24,9 +27,9 @@ public class EventHandler : MonoBehaviour
 
     void Start()
     {
-        qte_Img.enabled = false;
+        qte_SpaceBar.enabled = false;
         qte_Event.enabled = false;
-        qte_BgImg.enabled = false;
+        qte_Ring.enabled = false;
         qte_Win.enabled = false;
         qte_Fail.enabled = false;
         qte_FailSlider.enabled = false;
@@ -37,13 +40,13 @@ public class EventHandler : MonoBehaviour
     {
         concentrationBarAmount = concentrationBar.healthAmount;
 
-        if (nowIsEvent == false && qte_Img.enabled == false && qte_Event.enabled == false && qte_BgImg.enabled == false && carScript.playerIn && qte_Event.fillAmount <= 0.00f)
+        if (nowIsEvent == false && qte_SpaceBar.enabled == false && qte_Event.enabled == false && qte_Ring.enabled == false && carScript.playerIn && qte_Event.fillAmount <= 0.00f)
         {
             StartCoroutine(WaitForEvent());
 
         }
 
-        if (qte_BgImg.enabled == true && qte_Img.enabled == true && qte_Event.enabled == true)
+        if (qte_Ring.enabled == true && qte_SpaceBar.enabled == true && qte_Event.enabled == true)
         {
             nowIsEvent = true;
         }
@@ -59,13 +62,36 @@ public class EventHandler : MonoBehaviour
     }
     void QuickEvent()
     {
+        qte_SpaceBar.enabled = false;
+        qte_R.enabled = false;
+        qte_F.enabled = false;
+        qte_Z.enabled = false;
+        qte_Ring.enabled = false;
+        qte_FailSlider.enabled = false;
+
         if (qte_Event.fillAmount == 0)
         {
-            qte_Img.enabled = true;
-            qte_Event.enabled = true;
-            qte_BgImg.enabled = true;
-            qte_FailSlider.enabled = true;
             
+            qte_Event.enabled = true;
+            qte_Ring.enabled = true;
+            qte_FailSlider.enabled = true;
+            qte_FailSlider.fillAmount = 1f;
+            if (qte_Event.qteKey == 1)
+            {
+                qte_SpaceBar.enabled = true;
+            }
+            if (qte_Event.qteKey == 2)
+            {
+                qte_R.enabled = true;
+            }
+            if (qte_Event.qteKey == 3)
+            {
+                qte_F.enabled = true;
+            }
+            if (qte_Event.qteKey == 4)
+            {
+                qte_Z.enabled = true;
+            }
         }
     }
 
@@ -74,9 +100,12 @@ public class EventHandler : MonoBehaviour
         if (qte_Event.eventSucces == "y")
         {
             nowIsEvent = false;
-            qte_Img.enabled = false;
+            qte_SpaceBar.enabled = false;
+            qte_F.enabled = false;
+            qte_R.enabled = false;
+            qte_Z.enabled = false;
             qte_Event.enabled = false;
-            qte_BgImg.enabled = false;
+            qte_Ring.enabled = false;
             qte_Win.enabled = true;
             qte_Fail.enabled = false;
             qte_FailSlider.enabled = false;
@@ -95,9 +124,9 @@ public class EventHandler : MonoBehaviour
         {
             nowIsEvent = false;
             qte_Fail.enabled = true;
-            qte_Img.enabled = false;
+            qte_SpaceBar.enabled = false;
             qte_Event.enabled = false;
-            qte_BgImg.enabled = false;
+            qte_Ring.enabled = false;
             qte_Win.enabled = false;
             qte_FailSlider.enabled = false;
             showTimer = 0f;
@@ -138,10 +167,10 @@ public class EventHandler : MonoBehaviour
 
     void DisableAllButtons()
     {
-        qte_BgImg.enabled = false;
+        qte_Ring.enabled = false;
         qte_Event.enabled = false;
         qte_Fail.enabled = false;
-        qte_Img.enabled = false;
+        qte_SpaceBar.enabled = false;
         qte_Win.enabled = false;
         qte_FailSlider.enabled = false;
     }
