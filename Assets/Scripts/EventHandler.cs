@@ -65,7 +65,6 @@ public class EventHandler : MonoBehaviour
         qte_Event.enabled = true;
         if (nowIsEvent)
         {
-            
             qte_Ring.enabled = true;
             qte_FailSlider.enabled = true;
 
@@ -117,9 +116,10 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
-
+            qte_Event.failFillAmount = 1;
             if (showTimer >= 1f)
             {
+                
                 qte_Fail.enabled = false;
                 qte_Win.enabled = false;
                 showTimer = 0f;
@@ -140,7 +140,7 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
-
+            qte_Event.failFillAmount = 1;
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;

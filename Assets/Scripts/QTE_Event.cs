@@ -41,7 +41,7 @@ public class QTE_Event : MonoBehaviour
 
     void PickKey()
     {
-        qteKey = Random.Range(1, 2);
+        qteKey = Random.Range(1, 5);
         keypicked = true;
     }
     void SuccesRing()
@@ -139,7 +139,7 @@ public class QTE_Event : MonoBehaviour
 
                 }
             
-        }
+            }
         
     }
     IEnumerator ResetSucces()
