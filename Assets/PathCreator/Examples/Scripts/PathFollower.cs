@@ -12,9 +12,8 @@ namespace PathCreation.Examples
         public CarTransition carScript;
         public PositionConstraint positionCon;
         public EndOfPathInstruction endOfPathInstruction;
-        public float speed = 5;
-        public float turnSpeed = 1f;
-        public float slerpSpeed = 1f;
+        public float speed;
+
         float distanceTravelled;
         Quaternion rotQuat;
 

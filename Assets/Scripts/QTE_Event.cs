@@ -41,7 +41,7 @@ public class QTE_Event : MonoBehaviour
 
     void PickKey()
     {
-        qteKey = Random.Range(1, 5);
+        qteKey = Random.Range(1, 2);
         keypicked = true;
     }
     void SuccesRing()
@@ -49,7 +49,7 @@ public class QTE_Event : MonoBehaviour
         if (isFailTimer == false)
         {
             
-            Debug.Log(qteKey);
+            //Debug.Log(qteKey);
             if (qteKey == 1)
             {
                 
@@ -90,7 +90,7 @@ public class QTE_Event : MonoBehaviour
             if (timeThreshold > 0.2f && this != null)
             {
                 timeThreshold = 0f;
-                fillAmount -= 0.02f;
+                fillAmount -= 0.03f;
             }
 
             if (fillAmount < 0 && this != null)
@@ -111,10 +111,11 @@ public class QTE_Event : MonoBehaviour
     
     void FailTimer()
     {
-        if (eventHandler.nowIsEvent)
-        {
+     
+            if (eventHandler.nowIsEvent)
+            {
                 FailTimerImg.fillAmount = failFillAmount;
-                
+
                 failTimer += Time.deltaTime;
                 anotherTimeThreshold += Time.deltaTime;
                 //Debug.Log(failTimer);
@@ -124,6 +125,10 @@ public class QTE_Event : MonoBehaviour
                     anotherTimeThreshold = 0f;
 
                 }
+                if (failFillAmount <= 0)
+                {
+                    //failFillAmount = 1;
+                }
 
                 if (failTimer >= 5f)
                 {
@@ -131,9 +136,11 @@ public class QTE_Event : MonoBehaviour
                     eventSucces = "n";
                     concentrationBar.healthAmount -= 5;
                     StartCoroutine(ResetFail());
-                
+
                 }
+            
         }
+        
     }
     IEnumerator ResetSucces()
     {

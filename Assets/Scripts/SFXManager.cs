@@ -18,7 +18,7 @@ public class SFXManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         startSoundPlayed = false;
-        volumeScale = 1f;
+        volumeScale = 0.5f;
     }
 
     void Update()

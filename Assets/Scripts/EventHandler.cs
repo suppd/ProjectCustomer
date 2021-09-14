@@ -46,7 +46,7 @@ public class EventHandler : MonoBehaviour
 
         }
 
-        if (qte_Ring.enabled == true && qte_SpaceBar.enabled == true && qte_Event.enabled == true)
+        if (qte_Event.enabled == true)
         {
             nowIsEvent = true;
         }
@@ -62,35 +62,41 @@ public class EventHandler : MonoBehaviour
     }
     void QuickEvent()
     {
-        qte_SpaceBar.enabled = false;
-        qte_R.enabled = false;
-        qte_F.enabled = false;
-        qte_Z.enabled = false;
-        qte_Ring.enabled = false;
-        qte_FailSlider.enabled = false;
-
-        if (qte_Event.fillAmount == 0)
+        qte_Event.enabled = true;
+        if (nowIsEvent)
         {
             
-            qte_Event.enabled = true;
             qte_Ring.enabled = true;
             qte_FailSlider.enabled = true;
-            qte_FailSlider.fillAmount = 1f;
+
             if (qte_Event.qteKey == 1)
             {
                 qte_SpaceBar.enabled = true;
+                qte_R.enabled = false;
+                qte_F.enabled = false;
+                qte_Z.enabled = false;
+
             }
             if (qte_Event.qteKey == 2)
             {
                 qte_R.enabled = true;
+                qte_SpaceBar.enabled = false;
+                qte_F.enabled = false;
+                qte_Z.enabled = false;
             }
             if (qte_Event.qteKey == 3)
             {
                 qte_F.enabled = true;
+                qte_R.enabled = false;
+                qte_SpaceBar.enabled = false;
+                qte_Z.enabled = false;
             }
             if (qte_Event.qteKey == 4)
             {
                 qte_Z.enabled = true;
+                qte_R.enabled = false;
+                qte_F.enabled = false;
+                qte_SpaceBar.enabled = false;
             }
         }
     }
@@ -125,6 +131,9 @@ public class EventHandler : MonoBehaviour
             nowIsEvent = false;
             qte_Fail.enabled = true;
             qte_SpaceBar.enabled = false;
+            qte_Z.enabled = false;
+            qte_R.enabled = false;
+            qte_F.enabled = false;
             qte_Event.enabled = false;
             qte_Ring.enabled = false;
             qte_Win.enabled = false;
@@ -151,7 +160,7 @@ public class EventHandler : MonoBehaviour
 
         //Debug.Log(nowIsEvent);
 
-        //Debug.Log(qte_Event.eventSucces);
+        Debug.Log(qte_Event.eventSucces);
     }
 
     void HandleLoss()
@@ -179,6 +188,7 @@ public class EventHandler : MonoBehaviour
     {
         if (nowIsEvent != true)
         {   
+
             // Debug.Log("starting to wait");
             yield return new WaitForSeconds(6);
             // Debug.Log("waited for 5 seconds");

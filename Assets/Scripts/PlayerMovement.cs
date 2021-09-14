@@ -11,11 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 6f;
     public float movementMultiplier = 5f;
+    public AudioSource footSteps;
 
     float rbDrag = 6f;
-
     float horizontalMovement;
     float verticalMovement;
+    bool isWalking;
 
     public Rigidbody rb;
     
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        isWalking = false;
     }
 
     void Update()
@@ -45,6 +47,18 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxis("Horizontal");
         verticalMovement = Input.GetAxis("Vertical");
 
+        if (verticalMovement == 1 || horizontalMovement == 1)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+        if (isWalking && footSteps.isPlaying == false)
+        {
+            footSteps.Play();
+        }
         movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
 
     }
