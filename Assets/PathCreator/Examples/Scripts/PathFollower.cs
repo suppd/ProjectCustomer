@@ -39,20 +39,7 @@ namespace PathCreation.Examples
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-                
-                //rotQuat = pathCreator.path.GetRotationAtDistance(distanceTravelled);
-               // rotater.z += 180;
-               // rotater.x -= 90;
-
-                //transform.rotation = rotater;
-
-                //transform.rotation = Quaternion.LookRotation(Vector3.forward, transform.position * Time.fixedDeltaTime * turnSpeed);
-  
-                //Vector3 dir = pathCreator.path.GetClosestPointOnPath(transform.position) - transform.position;
-
-                //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-                //transform.rotation = Quaternion.Euler(rotQuat.x, rotQuat.y, angle);
+                transform.Rotate(new Vector3(90, -90, -180));
 
 
             } 
