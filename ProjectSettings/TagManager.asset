@@ -8,11 +8,12 @@ TagManager:
   - Car
   - Exit
   - ButtonBackground
+  - BlendCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Distortion
   - Water
   - UI
   - 
