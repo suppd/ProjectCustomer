@@ -7,6 +7,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ColorPalette
+    second: {fileID: 2100000, guid: bf4d0b039b519344aaa3d3f18c3d735d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColorPallete
+    second: {fileID: 2100000, guid: 6361f065e716ac64294f5ad32ad6833b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Emission
     second: {fileID: 5125955998383885961, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
   - first:
@@ -19,6 +29,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Grass
     second: {fileID: -3035101939719975992, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light emitting
+    second: {fileID: 2100000, guid: 2585a7300ac54ca40b297fd35670e8b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: f2b5771bad47f6643ac648a2742c4c4f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
