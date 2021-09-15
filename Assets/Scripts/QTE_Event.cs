@@ -130,7 +130,7 @@ public class QTE_Event : MonoBehaviour
                 //failFillAmount = 1;
             }
 
-            if (failTimer >= 5f)
+            if (failTimer >= 4.99f)
             {
                 failTimer = 0f;
                 eventSucces = "n";
@@ -139,16 +139,16 @@ public class QTE_Event : MonoBehaviour
 
             }
 
-<<<<<<< HEAD
-                }
-            
-            }
-        
-=======
-        }
 
->>>>>>> master
+        }
+            
     }
+        
+
+        
+
+
+
     IEnumerator ResetSucces()
     {
         yield return new WaitForSeconds(3f);

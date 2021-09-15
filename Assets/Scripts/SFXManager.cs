@@ -7,10 +7,15 @@ public class SFXManager : MonoBehaviour
     AudioSource audioSource;
 
     public float volumeScale;
-
     public AudioClip carStart;
     public AudioClip carDriving;
+    public AudioClip carCrash1;
+    public AudioClip carCrash2;
     public CarTransition carScript;
+    public ConcentrationBar concentrationBar;
+
+
+    bool crashSoundPlayed;
     bool startSoundPlayed;
     AudioSettings audioSettings;
     float timer = 0f;
@@ -18,7 +23,8 @@ public class SFXManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         startSoundPlayed = false;
-        volumeScale = 0.5f;
+        crashSoundPlayed = false;
+        volumeScale = 0.2f;
     }
 
     void Update()
@@ -39,8 +45,19 @@ public class SFXManager : MonoBehaviour
                 timer = 5.90f;
             }
         }
+        if (concentrationBar.healthAmount <= 1f && crashSoundPlayed == false)
+        {
+            PlayCrashSound();
+            //audioSource.PlayOneShot(carCrash2, volumeScale);
+            
+        }
     }
 
+    void PlayCrashSound()
+    {
+        audioSource.PlayOneShot(carCrash1, volumeScale);
+        crashSoundPlayed = true;
+    }
     void PlayStartEngine()
     {
         audioSource.PlayOneShot(carStart,volumeScale);

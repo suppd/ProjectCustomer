@@ -9,7 +9,8 @@ public class EndScreen : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("clicked");
     }
 
 }

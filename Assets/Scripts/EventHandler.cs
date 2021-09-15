@@ -25,6 +25,8 @@ public class EventHandler : MonoBehaviour
     public Text failText;
     public float showTimer = 0f;
 
+    float nextSceneTimer = 0f;
+
     void Start()
     {
         qte_SpaceBar.enabled = false;
@@ -65,10 +67,10 @@ public class EventHandler : MonoBehaviour
         qte_Event.enabled = true;
         if (nowIsEvent)
         {
-<<<<<<< HEAD
-=======
 
->>>>>>> master
+
+
+
             qte_Ring.enabled = true;
             qte_FailSlider.enabled = true;
 
@@ -120,11 +122,11 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
-<<<<<<< HEAD
+
             qte_Event.failFillAmount = 1;
-=======
-            qte_Event.failFillAmount = 1f;
->>>>>>> master
+
+            qte_Event.failTimer = 0f;
+
             if (showTimer >= 1f)
             {
                 
@@ -148,12 +150,12 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
-<<<<<<< HEAD
-            qte_Event.failFillAmount = 1;
-=======
-            qte_Event.failFillAmount = 1f;
 
->>>>>>> master
+            qte_Event.failFillAmount = 1;
+
+            qte_Event.failTimer = 0f;
+
+
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;
@@ -173,17 +175,22 @@ public class EventHandler : MonoBehaviour
 
         //Debug.Log(nowIsEvent);
 
-        Debug.Log(qte_Event.eventSucces);
+        //Debug.Log(qte_Event.eventSucces);
     }
 
     void HandleLoss()
     {
+        
         if (concentrationBar.healthAmount <= 0)
         {
+            nextSceneTimer += Time.deltaTime;
             failText.enabled = true;
             pathFollower.speed = 0;
             DisableAllButtons();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (nextSceneTimer >= 1)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 

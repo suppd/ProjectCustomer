@@ -32,7 +32,7 @@ namespace PathCreation.Examples
 
         void Update()
         {
-            Debug.Log(carScript.startMoving);
+            //Debug.Log(carScript.startMoving);
             if (pathCreator != null && positionCon.constraintActive == false && carScript.startMoving)
             {
                 distanceTravelled += speed * Time.deltaTime;

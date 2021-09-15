@@ -18,17 +18,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Emission
-    second: {fileID: 5125955998383885961, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: e805fe93dd0ac2a42829b3f46afd0dbc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fixed
-    second: {fileID: 5755186445582355385, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: 037902cd6bbf2fb4694b7ab67f800f78, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Grass
-    second: {fileID: -3035101939719975992, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: 3e86b57eb2baeac49b4c2d2afcc1346a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -43,17 +43,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.005
-    second: {fileID: -6629797300637803691, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: f8b4f6209f6e32d4a8630d2d5b720ea9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stop light
-    second: {fileID: -5605259013009595105, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: 6f6e60d92a3210546a05700d742e6453, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WIndows
-    second: {fileID: -4424108028424637242, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+    second: {fileID: 2100000, guid: bee17922c439fa5478c699bc1b839d16, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
