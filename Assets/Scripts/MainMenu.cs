@@ -20,7 +20,15 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void QuitGame()
+
+    public void OpenURL()
+    {
+        Application.OpenURL("https://feeldifferentdrivedifferent.org/");
+        Debug.Log("is this working?");
+    }
+
+
+public void QuitGame()
     {
         Application.Quit();
     }

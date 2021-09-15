@@ -79,7 +79,7 @@ public class CarTransition : MonoBehaviour
 
 
 
-        if (Vector3.Distance(PlayerPos.position, transform.position) < 10)
+        if (Vector3.Distance(PlayerPos.position, transform.position) < 25)
         {
             if (Input.GetKey(KeyCode.E) && playerIn == false)
             {

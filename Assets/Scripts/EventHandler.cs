@@ -33,7 +33,7 @@ public class EventHandler : MonoBehaviour
         qte_Win.enabled = false;
         qte_Fail.enabled = false;
         qte_FailSlider.enabled = false;
-        
+
     }
 
     void Update()
@@ -65,6 +65,10 @@ public class EventHandler : MonoBehaviour
         qte_Event.enabled = true;
         if (nowIsEvent)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             qte_Ring.enabled = true;
             qte_FailSlider.enabled = true;
 
@@ -116,7 +120,11 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
+<<<<<<< HEAD
             qte_Event.failFillAmount = 1;
+=======
+            qte_Event.failFillAmount = 1f;
+>>>>>>> master
             if (showTimer >= 1f)
             {
                 
@@ -140,7 +148,12 @@ public class EventHandler : MonoBehaviour
             qte_FailSlider.enabled = false;
             showTimer = 0f;
             qte_Event.keypicked = false;
+<<<<<<< HEAD
             qte_Event.failFillAmount = 1;
+=======
+            qte_Event.failFillAmount = 1f;
+
+>>>>>>> master
             if (showTimer >= 1f)
             {
                 qte_Fail.enabled = false;
@@ -187,7 +200,7 @@ public class EventHandler : MonoBehaviour
     IEnumerator WaitForEvent()
     {
         if (nowIsEvent != true)
-        {   
+        {
 
             // Debug.Log("starting to wait");
             yield return new WaitForSeconds(6);
