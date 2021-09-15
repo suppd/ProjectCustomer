@@ -13,4 +13,9 @@ public class EndScreen : MonoBehaviour
         Debug.Log("clicked");
     }
 
+    public void GoNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
 }
