@@ -3,7 +3,42 @@ guid: 6458ac6dc6862ad4f904a2e009717867
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 5125955998383885961, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fixed
+    second: {fileID: 5755186445582355385, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: -3035101939719975992, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: -6629797300637803691, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stop light
+    second: {fileID: -5605259013009595105, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WIndows
+    second: {fileID: -4424108028424637242, guid: e3087ab7554f513458fbc804c37b6bb0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ColorPaletteForBlender
+    second: {fileID: 2800000, guid: 40e1bb1a934ff764bb4ccb9edef7640c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

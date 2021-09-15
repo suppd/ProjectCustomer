@@ -41,18 +41,18 @@ public class QTE_Event : MonoBehaviour
 
     void PickKey()
     {
-        qteKey = Random.Range(1, 2);
+        qteKey = Random.Range(1, 5);
         keypicked = true;
     }
     void SuccesRing()
     {
         if (isFailTimer == false)
         {
-            
+
             //Debug.Log(qteKey);
             if (qteKey == 1)
             {
-                
+
                 if (Input.GetKeyDown(KeyCode.Space) && this != null)
                 {
                     fillAmount += 0.08f;
@@ -60,15 +60,15 @@ public class QTE_Event : MonoBehaviour
             }
             if (qteKey == 2)
             {
-                
+
                 if (Input.GetKeyDown(KeyCode.R) && this != null)
                 {
                     fillAmount += 0.08f;
-                }  
+                }
             }
             if (qteKey == 3)
             {
-                
+
                 if (Input.GetKeyDown(KeyCode.F) && this != null)
                 {
                     fillAmount += 0.08f;
@@ -76,7 +76,7 @@ public class QTE_Event : MonoBehaviour
             }
             if (qteKey == 4)
             {
-                
+
                 if (Input.GetKeyDown(KeyCode.Z) && this != null)
                 {
                     fillAmount += 0.08f;
@@ -108,45 +108,46 @@ public class QTE_Event : MonoBehaviour
             Ring.fillAmount = fillAmount;
         }
     }
-    
+
     void FailTimer()
     {
-     
-            if (eventHandler.nowIsEvent)
+
+        if (eventHandler.nowIsEvent)
+        {
+            FailTimerImg.fillAmount = failFillAmount;
+
+            failTimer += Time.deltaTime;
+            anotherTimeThreshold += Time.deltaTime;
+            //Debug.Log(failTimer);
+            if (anotherTimeThreshold >= 0.99f)
             {
-                FailTimerImg.fillAmount = failFillAmount;
+                failFillAmount -= 0.20f;
+                anotherTimeThreshold = 0f;
 
-                failTimer += Time.deltaTime;
-                anotherTimeThreshold += Time.deltaTime;
-                //Debug.Log(failTimer);
-                if (anotherTimeThreshold >= 0.99f)
-                {
-                    failFillAmount -= 0.20f;
-                    anotherTimeThreshold = 0f;
+            }
+            if (failFillAmount <= 0)
+            {
+                //failFillAmount = 1;
+            }
 
-                }
-                if (failFillAmount <= 0)
-                {
-                    //failFillAmount = 1;
-                }
+            if (failTimer >= 5f)
+            {
+                failTimer = 0f;
+                eventSucces = "n";
+                concentrationBar.healthAmount -= 5;
+                StartCoroutine(ResetFail());
 
-                if (failTimer >= 5f)
-                {
-                    failTimer = 0f;
-                    eventSucces = "n";
-                    concentrationBar.healthAmount -= 5;
-                    StartCoroutine(ResetFail());
+            }
 
-                }
-            
         }
-        
+
     }
     IEnumerator ResetSucces()
     {
-        yield return  new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
         eventSucces = "";
         fillAmount = 0;
+       
     }
 
     IEnumerator ResetFail()
@@ -154,6 +155,7 @@ public class QTE_Event : MonoBehaviour
         yield return new WaitForSeconds(3f);
         eventSucces = "";
         fillAmount = 0;
+       
     }
 
 }
